@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>report.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+html,footer,header{
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Custom MD PDF CSS
+ */
+html,footer,header{
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+
+ }
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///r%3A/2.Travail/1.Enseignement/Cours/_1.Outils/2.Developpement/1.SCSS/main.css" type="text/css"><link rel="stylesheet" href="file:///d%3A/rdaros/Cours/_1.Outils/2.Developpement/1.SCSS/main.css" type="text/css">
+</head>
+
+<body>
+    <h1 id="d%C3%A9veloppement-dun-service-de-load-balancer-pour-une-calculatrice-distribu%C3%A9e">DÉVELOPPEMENT D'UN SERVICE DE LOAD BALANCER POUR UNE CALCULATRICE DISTRIBUÉE</h1>
+<p><strong>Rapport pde Projet</strong><br>
+3ème année<br>
+Ingénierie Informatique et Réseaux</p>
+<p><strong>Sous le thème :</strong><br>
+Virtualisation d'un service de Load Balancer en architecture client-serveur</p>
+<p><strong>Réalisé par :</strong><br>
+Majjid Ayoub</p>
+<p><a href="https://www.linkedin.com/in/youbista/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" alt="LinkedIn"></a></p>
+<p><a href="https://majjid.com"><img src="https://img.shields.io/badge/Weasite-000000?style=for-the-badge&amp;logo=google-chrome&amp;logoColor=white" alt="Website"></a></p>
+<p><a href="https://bit.ly/BaraaNewsletter"><img src="https://img.shields.io/badge/Newsletter-FF5722?style=for-the-badge&amp;logo=substack&amp;logoColor=white" alt="Newsletter"></a></p>
+<p><a href="https://paypal.me/ayoubMajjid?country.x=MA&amp;locale.x=en_US"><img src="https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&amp;logo=paypal&amp;logoColor=white" alt="PayPal"></a></p>
+<p><strong>Encadré par :</strong><br>
+Tuteur de l'école : Mostapha Zbakh</p>
+<hr>
+<h2 id="d%C3%A9dicace">DÉDICACE</h2>
+<p>Je dédie ce travail à ma famille, pour leur soutien inconditionnel, leur amour et leurs encouragements constants. Leur présence a été ma force tout au long de ce parcours académique. À mes parents, qui ont toujours cru en moi et m'ont poussé à poursuivre mes rêves, je vous suis infiniment reconnaissant.</p>
+<p>À mes amis et collègues, qui ont partagé les hauts et les bas de cette aventure, merci pour votre amitié et votre soutien. Vos encouragements ont rendu ce projet plus enrichissant.</p>
+<p>Enfin, à mes professeurs et mentors, dont les conseils et l'expertise ont guidé mes pas, je vous exprime ma profonde gratitude. Ce travail est le fruit de vos enseignements et de votre confiance.</p>
+<hr>
+<h2 id="remerciements">REMERCIEMENTS</h2>
+<p>Nous tenons à exprimer notre gratitude à toutes les personnes qui ont contribué à la réalisation de ce projet.</p>
+<ul>
+<li><strong>Nos parents</strong> pour leur soutien inconditionnel et leur patience.</li>
+<li><strong>Nos camarades</strong> pour leurs idées et leur collaboration.</li>
+<li><strong>Notre encadrant</strong> pour ses conseils avisés et son accompagnement rigoureux.</li>
+</ul>
+<p>Merci à tous pour votre aide précieuse.</p>
+<hr>
+<h2 id="r%C3%A9sum%C3%A9">RÉSUMÉ</h2>
+<p><strong>Introduction :</strong><br>
+Ce projet a pour objectif de concevoir un service de Load Balancer distribué pour une calculatrice en architecture client-serveur. Il implique la virtualisation de machines Ubuntu sous Hyper-V, la configuration réseau, et le développement d'APIs Flask pour la communication entre les nœuds.</p>
+<p><strong>Contexte :</strong><br>
+Les architectures distribuées sont essentielles pour optimiser les performances et la disponibilité des services. Ce projet explore la répartition de charge entre un master et des slaves pour le calcul d'expressions mathématiques.</p>
+<p><strong>Objectifs :</strong></p>
+<ol>
+<li>Virtualiser 3 machines (1 master, 2 slaves) sous Hyper-V.</li>
+<li>Configurer un réseau interne avec IPs statiques.</li>
+<li>Développer des APIs Flask pour la gestion des tâches.</li>
+<li>Tester le système avec Postman et valider la répartition de charge.</li>
+</ol>
+<p><strong>Résultats :</strong><br>
+Le projet a abouti à une plateforme fonctionnelle où le master répartit les tâches de calcul entre les slaves. Les tests confirment la robustesse et l'efficacité du système.</p>
+<p><strong>Perspectives :</strong><br>
+Améliorer la sécurité, ajouter des fonctionnalités de monitoring, et étendre le système à un plus grand nombre de slaves.</p>
+<hr>
+<h2 id="abstract">ABSTRACT</h2>
+<p><strong>Introduction:</strong><br>
+This project aims to develop a distributed Load Balancer service for a client-server calculator. It involves virtualization of Ubuntu machines under Hyper-V, network configuration, and Flask APIs for node communication.</p>
+<p><strong>Context:</strong><br>
+Distributed architectures are key to optimizing performance and service availability. This project explores load balancing between a master and slaves for mathematical computations.</p>
+<p><strong>Objectives:</strong></p>
+<ol>
+<li>Virtualize 3 machines (1 master, 2 slaves) using Hyper-V.</li>
+<li>Configure an internal network with static IPs.</li>
+<li>Develop Flask APIs for task management.</li>
+<li>Test the system with Postman and validate load distribution.</li>
+</ol>
+<p><strong>Results:</strong><br>
+The project resulted in a functional platform where the master distributes tasks to slaves. Tests confirm system robustness and efficiency.</p>
+<p><strong>Future Work:</strong><br>
+Enhance security, add monitoring features, and scale the system to more slaves.</p>
+<hr>
+<h2 id="table-des-mati%C3%A8res">TABLE DES MATIÈRES</h2>
+<ol>
+<li><strong>Introduction</strong></li>
+<li><strong>Objectifs du Projet</strong></li>
+<li><strong>Environnement et Outils</strong></li>
+<li><strong>Méthodologie</strong>
+<ul>
+<li>4.1 Création des Machines Virtuelles</li>
+<li>4.2 Configuration Réseau</li>
+<li>4.3 Développement des APIs Flask</li>
+<li>4.4 Tests avec Postman</li>
+</ul>
+</li>
+<li><strong>Résultats et Analyse</strong></li>
+<li><strong>Conclusion</strong></li>
+<li><strong>Annexes</strong></li>
+</ol>
+<hr>
+<h2 id="liste-des-abr%C3%A9viations">LISTE DES ABRÉVIATIONS</h2>
+<ul>
+<li><strong>VM</strong> : Machine Virtuelle</li>
+<li><strong>API</strong> : Application Programming Interface</li>
+<li><strong>UML</strong> : Unified Modeling Language</li>
+<li><strong>HTTP</strong> : HyperText Transfer Protocol</li>
+</ul>
+<hr>
+<h2 id="introduction">INTRODUCTION</h2>
+<p>L'évolution des architectures distribuées a révolutionné la gestion des ressources informatiques. Ce projet explore la virtualisation et la répartition de charge à travers un service de calcul distribué.</p>
+<p><strong>Problématique :</strong><br>
+Comment concevoir un système scalable et efficace pour répartir des tâches de calcul entre plusieurs nœuds ?</p>
+<p><strong>Organisation du Mémoire :</strong></p>
+<ul>
+<li>Chapitre 1 : Présentation de l'environnement technique.</li>
+<li>Chapitre 2 : Analyse et conception du système.</li>
+<li>Chapitre 3 : Réalisation et tests.</li>
+<li>Chapitre 4 : Interfaces et résultats.</li>
+</ul>
+<hr>
+<h2 id="i-chapitre-1--pr%C3%A9sentation-de-lenvironnement">I. CHAPITRE 1 : PRÉSENTATION DE L'ENVIRONNEMENT</h2>
+<h3 id="11-outils-utilis%C3%A9s">1.1 Outils Utilisés</h3>
+<h4 id="111-hyper-v">1.1.1 Hyper-V</h4>
+<p><img src="./imgs/hyperv.png" alt="Hyper-V Logo"><br>
+<em>Figure 1 : Logo de Microsoft Hyper-V</em><br>
+Solution de virtualisation utilisée pour créer les machines virtuelles master et slaves.</p>
+<h4 id="112-ubuntu-server">1.1.2 Ubuntu Server</h4>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/UbuntuCoF.svg/120px-UbuntuCoF.svg.png" alt="Ubuntu Logo"><br>
+<em>Figure 2 : Logo d'Ubuntu Server</em><br>
+Système d'exploitation choisi pour sa stabilité et son support des outils open-source.</p>
+<h4 id="113-flask">1.1.3 Flask</h4>
+<p><img src="./imgs/flask.webp" alt="Flask Logo"><br>
+<em>Figure 3 : Framework Flask pour les APIs</em><br>
+Framework Python léger idéal pour le développement des microservices.</p>
+<h4 id="114-postman">1.1.4 Postman</h4>
+<p><img src="https://voyager.postman.com/logo/postman-logo-icon-orange.svg" alt="Postman Logo"><br>
+<em>Figure 4 : Interface Postman pour les tests API</em><br>
+Outil indispensable pour valider les endpoints et documenter les APIs.</p>
+<h3 id="12-architecture-du-projet">1.2 Architecture du Projet</h3>
+<p>f</p>
+<h2 id="ii-chapitre-2--analyse-et-conception">II. CHAPITRE 2 : ANALYSE ET CONCEPTION</h2>
+<h3 id="21-diagrammes-uml">2.1 Diagrammes UML</h3>
+<ul>
+<li><strong>Cas d'utilisation</strong> : Interactions entre utilisateurs et système.<br>
+<img src="./imgs/use-case.png" alt="Cas d'utilisation"></li>
+</ul>
+<h3 id="22-structure-des-donn%C3%A9es">2.2 Structure des Données</h3>
+<ul>
+<li><strong>JSON</strong> : Format utilisé pour les échanges entre nœuds.</li>
+</ul>
+<p>Le format JSON est utilisé pour envoyer et recevoir des informations entre les différents composants de l'architecture. Les requêtes envoyées au &quot;master&quot; contiennent des données sous forme de JSON qui spécifient les tâches à effectuer. Chaque tâche contient un identifiant unique, des informations sur l'opération à réaliser, ainsi que les données nécessaires pour effectuer le calcul.</p>
+<h4 id="exemple-de-requ%C3%AAte-json-pour-une-t%C3%A2che">Exemple de Requête JSON pour une Tâche :</h4>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"task_id"</span>: <span class="hljs-string">"12345"</span>,
+  <span class="hljs-attr">"payload"</span>: {
+    <span class="hljs-attr">"operation"</span>: <span class="hljs-string">"addition"</span>,
+    <span class="hljs-attr">"operands"</span>: [<span class="hljs-number">5</span>, <span class="hljs-number">3</span>]
+  }
+}
+</div></code></pre>
+<ul>
+<li><strong>task_id</strong> : Identifiant unique de la tâche.</li>
+<li><strong>operation</strong> : Type d'opération à effectuer (par exemple, addition, soustraction, multiplication, etc.).</li>
+<li><strong>operands</strong> : Liste des opérandes sur lesquels l'opération sera effectuée.</li>
+</ul>
+<h4 id="exemple-de-r%C3%A9ponse-json-du-%22slave%22">Exemple de Réponse JSON du &quot;Slave&quot; :</h4>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"task_id"</span>: <span class="hljs-string">"12345"</span>,
+  <span class="hljs-attr">"result"</span>: <span class="hljs-number">8</span>,
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"completed"</span>
+}
+</div></code></pre>
+<ul>
+<li><strong>task_id</strong> : Identifiant de la tâche correspondante.</li>
+<li><strong>result</strong> : Résultat du calcul effectué par l'esclave.</li>
+<li><strong>status</strong> : Statut de la tâche (par exemple, &quot;completed&quot; ou &quot;failed&quot;).</li>
+</ul>
+<h4 id="structure-dun-esclave-slave">Structure d’un Esclave (<code>slave</code>) :</h4>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"slave-a1b2c3d4"</span>,
+  <span class="hljs-attr">"webhook"</span>: <span class="hljs-string">"http://192.168.3.12:5000"</span>,
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"free"</span>
+}
+</div></code></pre>
+<ul>
+<li><code>id</code> : Identifiant unique de l’esclave (UUID court).</li>
+<li><code>webhook</code> : URL du point d’accès HTTP pour le traitement.</li>
+<li><code>status</code> : Statut actuel de l’esclave (free ou busy).</li>
+</ul>
+<hr>
+<h2 id="iii-chapitre-3--r%C3%A9alisation">III. CHAPITRE 3 : RÉALISATION</h2>
+<h3 id="31-d%C3%A9veloppement-des-apis">3.1 Développement des APIs</h3>
+<ul>
+<li>Endpoints :
+<ul>
+<li><code>/submit-task</code> : Soumission des expressions.</li>
+<li><code>/register-slave</code> : Enregistrement des slaves.</li>
+</ul>
+</li>
+</ul>
+<h3 id="32-tests">3.2 Tests</h3>
+<ul>
+<li><strong>Postman</strong> : Validation des fonctionnalités.<br>
+<img src="./imgs/postman.png" alt="Cas d'utilisation"></li>
+</ul>
+<hr>
+<h2 id="iv-chapitre-4--interfaces-et-manuel-dutilisation">IV. CHAPITRE 4 : INTERFACES ET Manuel d'utilisation</h2>
+<h3 id="41-captures-d%C3%A9cran">4.1 Captures d'Écran</h3>
+<ul>
+<li>
+<p><strong>Master</strong> : Interface de gestion des tâches.</p>
+</li>
+<li>
+<p><strong>Slaves</strong> : Logs des calculs.</p>
+<p><img src="./imgs/hyper-v-steep.png" alt="Hyperv"></p>
+</li>
+</ul>
+<h3 id="42-manuel-dutilisation">4.2 Manuel d'utilisation</h3>
+<p>Voici la <strong>documentation complète</strong> pour configurer votre projet de calculateur distribué Flask en utilisant un environnement virtuel Python (<code>venv</code>). Ce guide vous accompagne dans l’installation des dépendances, la configuration des environnements virtuels, l'exécution des services master et slaves, ainsi que les tests du système.</p>
+<hr>
+<h2 id="%F0%9F%93%81-structure-du-projet">📁 Structure du Projet</h2>
+<pre class="hljs"><code><div>distributed_calculator/
+├── master.py
+├── slave.py
+├── utils.py
+├── run_slaves.py
+├── requirements.txt
+└── README.md
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%93%8B-pr%C3%A9requis">📋 Prérequis</h2>
+<ul>
+<li>Python 3.8 ou supérieur</li>
+<li>pip</li>
+<li>Connexion Internet pour installer les paquets</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%94%A7-1-cr%C3%A9er-et-activer-lenvironnement-virtuel">🔧 1. Créer et Activer l’Environnement Virtuel</h2>
+<p><strong>Linux/MacOS :</strong></p>
+<pre class="hljs"><code><div>python3 -m venv venv
+<span class="hljs-built_in">source</span> venv/bin/activate
+</div></code></pre>
+<p><strong>Windows (CMD) :</strong></p>
+<pre class="hljs"><code><div>python -m venv venv
+venv\Scripts\activate
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%93%A6-2-installer-les-d%C3%A9pendances">📦 2. Installer les Dépendances</h2>
+<p>Créer un fichier <code>requirements.txt</code> :</p>
+<pre class="hljs"><code><div>flask
+requests
+</div></code></pre>
+<p>Puis exécuter :</p>
+<pre class="hljs"><code><div>pip install -r requirements.txt
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%A7%A0-3-lancer-le-serveur-master">🧠 3. Lancer le Serveur Master</h2>
+<ol>
+<li>Ouvrir un terminal.</li>
+<li>Activer l’environnement virtuel si ce n’est pas déjà fait.</li>
+<li>Lancer :</li>
+</ol>
+<pre class="hljs"><code><div>python master.py
+</div></code></pre>
+<p><img src="./imgs/ssh.png" alt="master server"></p>
+<p>Le serveur master est disponible à l’adresse <code>http://localhost:5000</code>.</p>
+<hr>
+<h2 id="%F0%9F%A4%96-4-lancer-les-serveurs-slaves">🤖 4. Lancer les Serveurs Slaves</h2>
+<p>Chaque slave doit fonctionner sur un port différent. Utilisez des onglets ou de nouvelles fenêtres de terminal.</p>
+<p><strong>Exemple pour démarrer le Slave 1 (port 6000) :</strong></p>
+<pre class="hljs"><code><div>python slave.py slave-1
+</div></code></pre>
+<p><strong>Exemple pour Slave 2 (port 6001) :</strong></p>
+<ol>
+<li>Modifier <code>WEBHOOK_PORT</code> à 6001 dans <code>slave.py</code> ou le passer en argument.</li>
+<li>Dupliquer et ajuster le fichier si nécessaire.</li>
+</ol>
+<blockquote>
+<p>Le slave s’enregistre automatiquement auprès du master via <code>http://&lt;ip-master&gt;:5000</code>.</p>
+</blockquote>
+<hr>
+<h2 id="%F0%9F%A7%AA-5-soumettre-une-t%C3%A2che">🧪 5. Soumettre une Tâche</h2>
+<p>Utiliser <strong>Postman</strong> ou <code>curl</code> :</p>
+<pre class="hljs"><code><div>curl -X POST http://localhost:5000/submit-task \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"payload": "4 * (2 + 3)"}'</span>
+</div></code></pre>
+<hr>
+<h2 id="%E2%9C%85-6-suivi-et-supervision">✅ 6. Suivi et Supervision</h2>
+<ul>
+<li>Consulter les tâches en cours ou terminées :<br>
+<a href="http://localhost:5000/tasks">http://localhost:5000/tasks</a></li>
+<li>Voir les slaves enregistrés :<br>
+<a href="http://localhost:5000/slaves">http://localhost:5000/slaves</a></li>
+<li>Vérifier manuellement le statut d’un slave :<br>
+<a href="http://localhost:6000/status/slave-1">http://localhost:6000/status/slave-1</a></li>
+</ul>
+<hr>
+<h2 id="%F0%9F%A7%B9-7-d%C3%A9sactiver-lenvironnement">🧹 7. Désactiver l’Environnement</h2>
+<p>Lorsque vous avez terminé :</p>
+<pre class="hljs"><code><div>deactivate
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%9B%A0-optionnel--lancer-plusieurs-slaves-avec-des-ports-personnalis%C3%A9s">🛠 Optionnel : Lancer Plusieurs Slaves avec des Ports Personnalisés</h2>
+<p>Vous pouvez dupliquer <code>slave.py</code> ou ajouter un paramètre CLI pour ajuster dynamiquement le port et l’ID du slave. Exemple :</p>
+<pre class="hljs"><code><div>python slave.py slave-2 6001
+</div></code></pre>
+<p>Et dans <code>slave.py</code>, modifiez comme suit :</p>
+<pre class="hljs"><code><div>SLAVE_ID = sys.argv[<span class="hljs-number">1</span>]
+WEBHOOK_PORT = int(sys.argv[<span class="hljs-number">2</span>])
+</div></code></pre>
+<hr>
+<h3 id="%E2%8F%B1%EF%B8%8F-temps-de-r%C3%A9ponse">⏱️ Temps de Réponse</h3>
+<ul>
+<li><strong>Temps de réponse moyen : 7 secondes par tâche.</strong></li>
+</ul>
+<hr>
+<h2 id="conclusion">CONCLUSION</h2>
+<h2 id="ce-projet-a-permis-de-ma%C3%AEtriser-la-virtualisation-les-architectures-distribu%C3%A9es-et-les-apis-flask-les-r%C3%A9sultats-sont-concluants-avec-des-perspectives-dam%C3%A9lioration-prometteuses1747003014927">Ce projet a permis de maîtriser la virtualisation, les architectures distribuées et les APIs Flask. Les résultats sont concluants, avec des perspectives d'amélioration prometteuses.<br>
+<img src="imgs/conclusion.png" alt="1747003014927"></h2>
+<h2 id="annexes">ANNEXES</h2>
+<ol>
+<li><strong>Code Source</strong> : Liens vers les dépôts GitHub.</li>
+<li><strong>Documentation API</strong> : Lien Postman.</li>
+<li><strong>Captures d'Écran</strong> : Réseau, interfaces, tests.</li>
+</ol>
+<hr>
+<h2 id="webographie">WEBOGRAPHIE</h2>
+<ol>
+<li>Documentation Flask : https://flask.palletsprojects.com/</li>
+<li>Hyper-V : https://docs.microsoft.com/hyper-v/</li>
+<li>Postman : https://www.postman.com/</li>
+</ol>
+
+</body>
+
+</html>
