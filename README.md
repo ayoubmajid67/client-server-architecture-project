@@ -310,7 +310,7 @@ Lancer :
 python master.py
 ```
 
-![SSH Terminal](imgs/ssh.png)
+![SSH Terminal](./imgs/ssh.png)
 
 Le serveur master est disponible à l’adresse `http://localhost:5000`.
 
