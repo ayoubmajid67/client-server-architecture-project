@@ -2,7 +2,7 @@
 
 ## Rapport de Projet
 
-### 3ème annéeIngénierie Informatique et Réseaux
+### 4ème année Ingénierie Informatique et Réseaux
 
 Sous le thème :Virtualisation d'un service de Load Balancer en architecture client-serveur
 
@@ -310,7 +310,7 @@ Lancer :
 python master.py
 ```
 
-![SSH Terminal](imgs/ssh.png)
+![SSH Terminal](./imgs/ssh.png)
 
 Le serveur master est disponible à l’adresse `http://localhost:5000`.
 
