@@ -315,15 +315,7 @@ python master.py
 
 Le serveur master est disponible à l’adresse `http://localhost:5000`.
 
-#### 🤖 4. Lancer les Serveurs Slaves
-
-Chaque slave doit fonctionner sur un port différent. Utilisez des onglets ou de nouvelles fenêtres de terminal.
-
-Exemple pour démarrer le Slave 1 (port 6000) :
-
-```bash
-python slave.py slave-1
-```
+c`
 
 Exemple pour Slave 2 (port 6001) :
 Modifier `WEBHOOK_PORT` à 6001 dans `slave.py` ou le passer en argument.
@@ -350,7 +342,7 @@ Voir les slaves enregistrés :
 [http://localhost:5000/slaves](http://localhost:5000/slaves)
 
 Vérifier manuellement le statut d’un slave :
-[http://localhost:6000/status/slave-1](http://localhost:6000/status/slave-1)
+[{slave-ip}:{salve-port}/helath](http://localhost:6000/health)
 
 #### 🧹 7. Désactiver l’Environnement
 
@@ -365,7 +357,7 @@ deactivate
 Vous pouvez dupliquer `slave.py` ou ajouter un paramètre CLI pour ajuster dynamiquement le port et l’ID du slave. Exemple :
 
 ```bash
-python slave.py slave-2 6001
+python slave.py  6001
 ```
 
 Et dans `slave.py`, modifiez comme suit :
