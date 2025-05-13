@@ -1,0 +1,391 @@
+1
+00:00:00,160 --> 00:00:02,960
+Hello everyone, I hope you doing well.
+
+2
+00:00:03,400 --> 00:00:05,1000
+Today I would like to present my
+
+3
+00:00:06,040 --> 00:00:08,960
+project about creating a master
+
+4
+00:00:08,960 --> 00:00:11,400
+slave distributed architecture.
+
+5
+00:00:11,960 --> 00:00:14,560
+So before getting into details
+
+6
+00:00:14,800 --> 00:00:17,800
+I want to introduce the subject. We all
+
+7
+00:00:17,800 --> 00:00:19,920
+know know that big
+
+8
+00:00:19,920 --> 00:00:22,400
+companies like Instagram or
+
+9
+00:00:22,400 --> 00:00:25,360
+Facebook might have millions
+
+10
+00:00:25,440 --> 00:00:28,400
+or even billions of users every day.
+
+11
+00:00:28,640 --> 00:00:31,520
+The question appears here. How does
+
+12
+00:00:31,680 --> 00:00:34,640
+this companies handle all this traffic?
+
+13
+00:00:34,960 --> 00:00:37,840
+It is impossible to using just
+
+14
+00:00:37,920 --> 00:00:40,640
+one server to handle all this traffic. So
+
+15
+00:00:40,640 --> 00:00:43,360
+we have to use multiple servers to be
+
+16
+00:00:43,360 --> 00:00:46,320
+capable of handling the
+
+17
+00:00:46,400 --> 00:00:48,600
+huge traffic commands from the user.
+
+18
+00:00:49,160 --> 00:00:52,160
+So that is the idea about my
+
+19
+00:00:52,160 --> 00:00:55,040
+project is to demonstrate how
+
+20
+00:00:55,040 --> 00:00:57,920
+can we use multiple services.
+
+21
+00:00:58,160 --> 00:00:59,680
+Or multiple servers
+
+22
+00:01:00,549 --> 00:01:03,349
+handle the requests coming from
+
+23
+00:01:03,349 --> 00:01:03,869
+the
+
+24
+00:01:05,116 --> 00:01:07,396
+further ado, let's get started.
+
+25
+00:01:08,667 --> 00:01:11,027
+this phase, the master should decide
+
+26
+00:01:11,027 --> 00:01:13,147
+which slave should perform the
+
+27
+00:01:13,147 --> 00:01:15,867
+mathematical calculation. So
+
+28
+00:01:15,947 --> 00:01:18,747
+the master will send the request firstly
+
+29
+00:01:18,747 --> 00:01:21,627
+to the first slave and ask him a binary
+
+30
+00:01:21,627 --> 00:01:23,947
+question. Are you available to perform
+
+31
+00:01:23,947 --> 00:01:26,347
+this task?So the slave will will
+
+32
+00:01:26,107 --> 00:01:28,867
+response will response either I'm
+
+33
+00:01:28,867 --> 00:01:31,867
+available or I am not available. So the
+
+34
+00:01:31,867 --> 00:01:34,747
+master in the case. When the
+
+35
+00:01:35,307 --> 00:01:37,227
+slave is available, the master will
+
+36
+00:01:37,227 --> 00:01:39,827
+assign the will assign the task to the
+
+37
+00:01:39,867 --> 00:01:42,747
+first slave and the slave starts
+
+38
+00:01:42,747 --> 00:01:44,787
+performing for calculating the
+
+39
+00:01:44,787 --> 00:01:47,787
+mathematical expression. So let's assume
+
+40
+00:01:47,787 --> 00:01:49,867
+in this case that this mathematical
+
+41
+00:01:49,867 --> 00:01:52,227
+expression will take 7 seconds
+
+42
+00:01:52,787 --> 00:01:55,227
+and in this phase there
+
+43
+00:01:55,707 --> 00:01:58,227
+is a calculation that's
+
+44
+00:01:58,227 --> 00:02:01,147
+performing here. So the client
+
+45
+00:02:01,387 --> 00:02:03,867
+will send another request with another
+
+46
+00:02:04,947 --> 00:02:06,987
+another mathematical expression. The
+
+47
+00:02:06,987 --> 00:02:09,707
+master will ask the first slave if it's
+
+48
+00:02:09,707 --> 00:02:11,507
+available. Sure the the
+
+49
+00:02:11,467 --> 00:02:13,827
+response it should be I'm not available.
+
+50
+00:02:14,027 --> 00:02:15,427
+So the master will ask
+
+51
+00:02:16,787 --> 00:02:19,187
+will ask the second slave. The second
+
+52
+00:02:19,187 --> 00:02:21,747
+slave response I am available. The master
+
+53
+00:02:21,747 --> 00:02:24,067
+will assign the second the second
+
+54
+00:02:25,347 --> 00:02:27,587
+mathematical expression to the second
+
+55
+00:02:27,827 --> 00:02:30,627
+slave. So the slave 2 will start
+
+56
+00:02:30,627 --> 00:02:32,987
+performing the the
+
+57
+00:02:32,787 --> 00:02:35,627
+expression and now it assumes
+
+58
+00:02:35,627 --> 00:02:38,267
+again that the clients will send
+
+59
+00:02:38,267 --> 00:02:40,667
+another request or another request to the
+
+60
+00:02:40,667 --> 00:02:43,467
+master. The master master of course
+
+61
+00:02:43,467 --> 00:02:45,707
+will assign will assign the
+
+62
+00:02:46,267 --> 00:02:48,747
+mathematical expression to the third
+
+63
+00:02:48,747 --> 00:02:50,987
+slave and now we we
+
+64
+00:02:50,907 --> 00:02:53,667
+have the server is busy. So
+
+65
+00:02:53,667 --> 00:02:56,587
+when clients again send a request
+
+66
+00:02:56,667 --> 00:02:59,147
+to perform another mathematical
+
+67
+00:02:59,147 --> 00:03:01,867
+expression, the master will response
+
+68
+00:03:02,587 --> 00:03:04,987
+will response which I am busy enough. So
+
+69
+00:03:04,987 --> 00:03:07,867
+when the slave get when the
+
+70
+00:03:07,867 --> 00:03:10,747
+task with the task being
+
+71
+00:03:10,747 --> 00:03:13,307
+completed in the first slave, the slave
+
+72
+00:03:13,307 --> 00:03:15,347
+will send will send the result to the
+
+73
+00:03:15,347 --> 00:03:17,947
+master. The masters should save the task
+
+74
+00:03:18,507 --> 00:03:21,067
+thus the result in the task list.
+
+75
+00:03:21,587 --> 00:03:24,427
+So the client to know what is the result
+
+76
+00:03:24,427 --> 00:03:25,787
+of the task, it should
+
+77
+00:03:26,827 --> 00:03:29,187
+send the request to the master to get the
+
+78
+00:03:29,187 --> 00:03:31,787
+list of the result of the tasks.
+
+79
+00:03:32,147 --> 00:03:33,387
+And that's what's happening in the
+
+80
+00:03:33,627 --> 00:03:34,907
+architecture and
+
+81
+00:03:34,878 --> 00:03:37,278
+now let's go to the technical
+
+82
+00:03:37,838 --> 00:03:38,478
+explain.
+
+83
+00:03:39,059 --> 00:03:41,819
+So the first step to do is to
+
+84
+00:03:41,939 --> 00:03:44,899
+open in Hyper-V and setting up three
+
+85
+00:03:44,899 --> 00:03:47,459
+machines, one master and two slaves
+
+86
+00:03:48,048 --> 00:03:50,608
+Now let's go to the postman to check our
+
+87
+00:03:50,688 --> 00:03:53,608
+code. So if I send a request to the
+
+88
+00:03:53,888 --> 00:03:56,768
+gate slaves, OK, you see here there
+
+89
+00:03:56,768 --> 00:03:58,688
+are two slaves registered now
+
+90
+00:03:59,361 --> 00:04:02,001
+Submit a new task. I want to perform this
+
+91
+00:04:02,001 --> 00:04:04,921
+operation. So if I send the request, it
+
+92
+00:04:04,921 --> 00:04:07,721
+say that the task is assigned to this
+
+93
+00:04:07,721 --> 00:04:10,681
+slave. Go into the get task. How can you
+
+94
+00:04:10,681 --> 00:04:13,441
+see the second slave is busy now
+
+95
+00:04:13,601 --> 00:04:16,601
+if I get task or the
+
+96
+00:04:16,641 --> 00:04:18,721
+status now is done. So
+
+97
+00:04:18,598 --> 00:04:20,918
+thank you very much for watchingAnd I
+
+98
+00:04:20,918 --> 00:04:22,118
+hope you like the topic.
