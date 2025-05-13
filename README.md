@@ -142,7 +142,7 @@ Comment concevoir un système scalable et efficace pour répartir des tâches de
 
 #### 1.1.1 Hyper-V
 
-![Logo de Microsoft Hyper-V](http://raw.githubusercontent.com/ayoubmajid67/client-server-architecture-project/refs/heads/main/reports/imgs/hyperv.png?raw=true)
+![Logo de Microsoft Hyper-V](./imgs/hyperv.png)
 Solution de virtualisation utilisée pour créer les machines virtuelles master et slaves.
 z
 
@@ -172,7 +172,7 @@ Outil indispensable pour valider les endpoints et documenter les APIs.
 ### 2.1 Diagrammes UML
 
 Cas d’utilisation : Interactions entre utilisateurs et système.
-![Diagramme Use Case](https://github.com/ayoubmajid67/client-server-architecture-project/blob/main/reports/imgs/use-case.png)
+![Diagramme Use Case](./imgs/use-case.png)
 
 ### 2.2 Structure des Données
 
