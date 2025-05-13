@@ -244,9 +244,11 @@ Postman : Validation des fonctionnalités.
 
 ### 4.1 Captures d'Écran
 
-- **Master** : Interface de gestion des tâches.
-- **Slaves** : Logs des calculs.
+* **Master** : Interface de gestion des tâches.
+* **Slaves** : Logs des calculs.
   ![Hyper-V Steep](imgs/hyper-v-steep.png)
+
+---
 
 ### 4.2 Manuel d'utilisation
 
@@ -264,11 +266,15 @@ distributed_calculator/
 └── README.md
 ```
 
+---
+
 #### 📋 Prérequis
 
-- Python 3.8 ou supérieur
-- pip
-- Connexion Internet pour installer les paquets
+* Python 3.8 ou supérieur
+* pip
+* Connexion Internet pour installer les paquets
+
+---
 
 #### 🔧 1. Créer et Activer l’Environnement Virtuel
 
@@ -286,6 +292,8 @@ python -m venv venv
 venv\Scripts\activate
 ```
 
+---
+
 #### 📦 2. Installer les Dépendances
 
 Créer un fichier `requirements.txt` :
@@ -301,11 +309,23 @@ Puis exécuter :
 pip install -r requirements.txt
 ```
 
-#### 🧠 3. Lancer le Serveur Master
+---
 
-Ouvrir un terminal.
-Activer l’environnement virtuel si ce n’est pas déjà fait.
-Lancer :
+#### ⚙️ 3. Configuration Importante Avant de Lancer les Slaves
+
+Avant d'exécuter les slaves, vous devez **mettre à jour l'adresse IP du master** dans le fichier `slave.py` :
+
+```python
+from threading import Thread
+
+MASTER_URL = "http://<ip-de-votre-master>:5000"  # Remplacez localhost par l'adresse IP réelle du master
+```
+
+Assurez-vous que le master est en cours d’exécution et accessible à cette adresse.
+
+---
+
+#### 🧠 4. Lancer le Serveur Master
 
 ```bash
 python master.py
@@ -315,17 +335,38 @@ python master.py
 
 Le serveur master est disponible à l’adresse `http://localhost:5000`.
 
-c`
+---
 
-Exemple pour Slave 2 (port 6001) :
-Modifier `WEBHOOK_PORT` à 6001 dans `slave.py` ou le passer en argument.
-Dupliquer et ajuster le fichier si nécessaire.
+#### 🛰️ 5. Lancer les Slaves
 
-Le slave s’enregistre automatiquement auprès du master via `http://<ip-master>:5000`.
+##### ➕ Option 1 : Lancer un seul Slave avec un port spécifique
 
-#### 🧪 5. Soumettre une Tâche
+```bash
+python slave.py 6001
+```
 
-Utiliser Postman ou `curl` :
+Dans ce cas, assurez-vous que `slave.py` accepte le port en argument :
+
+```python
+import sys
+WEBHOOK_PORT = int(sys.argv[1])
+```
+
+##### ⚡ Option 2 : Lancer 3 slaves automatiquement (ports 6000, 6001, 6002)
+
+Utilisez le script `run_slaves.py` pour démarrer trois instances simultanées :
+
+```bash
+python run_slaves.py
+```
+
+Cela lance trois slaves sur les ports 6000, 6001, et 6002 automatiquement, chacun s’enregistrant auprès du master défini.
+
+---
+
+#### 🧪 6. Soumettre une Tâche
+
+Utilisez Postman ou la commande `curl` suivante :
 
 ```bash
 curl -X POST http://localhost:5000/submit-task \
@@ -333,62 +374,55 @@ curl -X POST http://localhost:5000/submit-task \
   -d '{"payload": "4 * (2 + 3)"}'
 ```
 
-#### ✅ 6. Suivi et Supervision
+---
 
-Consulter les tâches en cours ou terminées :
-[http://localhost:5000/tasks](http://localhost:5000/tasks)
+#### ✅ 7. Suivi et Supervision
 
-Voir les slaves enregistrés :
-[http://localhost:5000/slaves](http://localhost:5000/slaves)
+* Consulter les tâches : [http://localhost:5000/tasks](http://localhost:5000/tasks)
+* Voir les slaves enregistrés : [http://localhost:5000/slaves](http://localhost:5000/slaves)
+...
+[API Documentation ](https://documenter.getpostman.com/view/29407117/2sB2jAc8Mf#e34f1439-9c97-4450-8df7-a1f3e903c3ba)
 
-Vérifier manuellement le statut d’un slave :
-[{slave-ip}:{salve-port}/helath](http://localhost:6000/health)
+---
 
-#### 🧹 7. Désactiver l’Environnement
-
-Lorsque vous avez terminé :
+#### 🧹 8. Désactiver l’Environnement
 
 ```bash
 deactivate
 ```
 
-#### 🛠 Optionnel : Lancer Plusieurs Slaves avec des Ports Personnalisés
-
-Vous pouvez dupliquer `slave.py` ou ajouter un paramètre CLI pour ajuster dynamiquement le port et l’ID du slave. Exemple :
-
-```bash
-python slave.py  6001
-```
-
-Et dans `slave.py`, modifiez comme suit :
-
-```python
-SLAVE_ID = sys.argv[1]
-WEBHOOK_PORT = int(sys.argv[2])
-```
+---
 
 #### ⏱ Temps de Réponse
 
-Temps de réponse moyen : 7 secondes par tâche.
+Temps de réponse moyen : **\~7 secondes** par tâche (selon la complexité de l'expression et la disponibilité des slaves).
 
 ---
 
 ## CONCLUSION
 
-Ce projet a permis de maîtriser la virtualisation, les architectures distribuées et les APIs Flask. Les résultats sont concluants, avec des perspectives d'amélioration prometteuses.
+Ce projet a permis de maîtriser :
+
+* La virtualisation via Hyper-V
+* L’architecture distribuée (master/slave)
+* Le développement d’APIs Flask
+* La gestion concurrente des tâches
+
+Il constitue une base prometteuse pour évoluer vers des systèmes plus complexes et résilients.
 
 ---
 
 ## ANNEXES
 
-- Code Source : Liens vers les dépôts GitHub.
-- Documentation API : Lien Postman.
-- Captures d'Écran : Réseau, interfaces, tests.
+* 💻 Code Source : Lien vers le dépôt GitHub
+* 📘 Documentation API : Lien Postman
+* 📷 Captures d'Écran : Interfaces Hyper-V, logs, réseau
 
 ---
 
 ## WEBOGRAPHIE
 
-- [Documentation Flask](https://flask.palletsprojects.com/)
-- [Hyper-V Documentation](https://docs.microsoft.com/hyper-v/)
-- [Postman](https://www.postman.com/)
+* [Flask Documentation](https://flask.palletsprojects.com/)
+* [Microsoft Hyper-V](https://docs.microsoft.com/hyper-v/)
+* [Postman](https://www.postman.com/)
+
